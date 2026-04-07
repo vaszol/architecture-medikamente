@@ -1,0 +1,154 @@
+<mxfile host="drawio-plugin" modified="2026-04-07T21:36:52.771Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="22.1.22" etag="bjC287SCX4jRZvHLwZik" type="embed">
+  <diagram name="Ishikawa_Medikamente_Migration" id="ishikawa_migration">
+    <mxGraphModel dx="1354" dy="732" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Диаграмма Исикавы — Узкие места при миграции «Медикаменте»" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="350" y="10" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="head" value="СНИЖЕНИЕ ПРОИЗВОДИТЕЛЬНОСТИ&#xa;ПРИ МИГРАЦИИ" style="shape=arrow;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=14;align=center;" parent="1" vertex="1">
+          <mxGeometry x="1050" y="350" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="spine" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#333333;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="380" as="sourcePoint" />
+            <mxPoint x="1050" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cat1_arrow" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#e67e22;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cat1_label" value="Инфраструктура" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fillColor=#fdebd0;" parent="1" vertex="1">
+          <mxGeometry x="180" y="170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cat1_prob1" value="Старое оборудование не тянет новую нагрузку" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="240" y="215" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat1_prob2" value="Сетевые каналы (1 Гбит/с → нужны 10 Гбит/с)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="240" y="240" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat1_prob3" value="Один сервер → не хватает под микросервисы" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="240" y="265" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat2_arrow" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#3498db;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cat2_label" value="Данные" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fillColor=#d6eaf8;" parent="1" vertex="1">
+          <mxGeometry x="450" y="170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cat2_prob1" value="Миграция 10+ лет Excel-файлов → БД" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="520" y="210" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat2_prob2" value="Дублирование данных (Excel + 1С)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="520" y="235" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat2_prob3" value="Нет единого формата (JPG, PDF, XLSX, DOC)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="520" y="260" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat2_prob4" value="Очистка PII перед загрузкой в Data Lake" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="520" y="285" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat3_arrow" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#9b59b6;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cat3_label" value="Интеграция" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fillColor=#e8daef;" parent="1" vertex="1">
+          <mxGeometry x="770" y="170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cat3_prob1" value="ККМ → OLE/TCP → замена на HTTPS" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="850" y="210" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat3_prob2" value="Лаборатория → файлы на диск → переделка на API" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="850" y="235" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat3_prob3" value="1С → файловый режим → клиент-сервер" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="850" y="260" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat3_prob4" value="AD → Keycloak (синхронизация паролей)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="850" y="285" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat4_arrow" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#2ecc71;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cat4_label" value="Процессы" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fillColor=#d5f5e3;" parent="1" vertex="1">
+          <mxGeometry x="460" y="545" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cat4_prob1" value="Downtime при миграции (24/7 клиника)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="520" y="435" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat4_prob2" value="Ручные процессы → автоматизация" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="520" y="460" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat4_prob3" value="Бизнес-процессы не задокументированы" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="520" y="485" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat5_arrow" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#e74c3c;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cat5_label" value="Персонал" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fillColor=#fadbd8;" parent="1" vertex="1">
+          <mxGeometry x="780" y="545" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cat5_prob1" value="Сотрудники не обучены новым системам" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="850" y="435" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat5_prob2" value="Сопротивление изменениям" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="850" y="460" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat5_prob3" value="Не хватает DevOps/SRE инженеров" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="850" y="485" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat6_arrow" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#f39c12;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cat6_label" value="Безопасность" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fillColor=#fef9e7;" parent="1" vertex="1">
+          <mxGeometry x="180" y="545" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cat6_prob1" value="Утечка PII в процессе миграции" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="240" y="435" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat6_prob2" value="Шифрование при передаче (TLS) не настроено" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="240" y="460" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cat6_prob3" value="Нет аудита доступа во время миграции" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11" parent="1" vertex="1">
+          <mxGeometry x="240" y="485" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="cat3_label">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="360" as="sourcePoint" />
+            <mxPoint x="860" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="cat2_label">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="370" as="sourcePoint" />
+            <mxPoint x="540" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="cat1_label">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="380" as="sourcePoint" />
+            <mxPoint x="270" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="cat6_label">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="520" as="sourcePoint" />
+            <mxPoint x="270" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="cat4_label">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="710" as="sourcePoint" />
+            <mxPoint x="540" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="cat5_label">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="700" as="sourcePoint" />
+            <mxPoint x="860" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
