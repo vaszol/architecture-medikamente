@@ -1,8 +1,35 @@
 # доработка существующей схемы
 
- - существующие элементы: Administrator, Bookkeeper, Cassier, Patient, Doctor, Warehouse keeper, 1C, ККМ, Exchange, файловый сервер, папки, лабораторию
- - Добавил новые блоки: Patient Portal, EHR, Appointment Schedule, API Gateway, IAM, Data Warehouse, Anonymization Engine, Audit & Monitoring, Message Broker
- - Объединил всё в логические слои: Analytics System, Integration Layer, Medikamente Gen2, Payment System
+## Устаревшие компоненты (заменены)
 
-[c4_to_be.drawio](c4_to_be.drawio)
+- Файловый сервер с Excel/JPG/PDF →  заменён на Operational DB (PostgreSQL)
+- 1С в файловом режиме → мигрирован на клиент-серверный режим
+- AD (Active Directory) → заменён на IAM (Keycloak)
+- OLE/TCP интеграция с ККМ → заменена на TLS + Платёжный шлюз
+- Лаборатория → файлы на диск → заменена на API Gateway
+
+## Миграционные адаптеры (на время перехода)
+
+- Migration Adapter — обеспечивает синхронизацию данных между старой и новой системами
+- CDC (Change Data Capture) — копирует изменения из legacy БД в новую
+
+## Этапы миграции
+
+1. Параллельный запуск (8 недель) — обе системы работают синхронно
+2. Перевод трафика (6 недель) — постепенное отключение legacy
+3. Отключение (2 недели) — полное отключение файлового сервера и 1С в файловом режиме
+
+## Ключевые изменения
+
+| Было                      | Стало                          |
+|---------------------------|--------------------------------|
+| Excel на файловом сервере | PostgreSQL (шифрование, аудит) |
+| 1С файловый режим         | 1С клиент-сервер               |
+| AD аутентификация         | Keycloak (OAuth2/OIDC)         |
+| OLE/TCP (без шифрования)  | TLS 1.3 + mTLS                 |
+| Нет аудита                | Audit Store + SIEM             |
+| Нет аналитики             | Data Lake + Analytics Engine   |
+
+
+[c4_to_be.drawio](c4_to_be.drawio.xml)
 ![c4_to_be.drawio.png](c4_to_be.drawio.png)
