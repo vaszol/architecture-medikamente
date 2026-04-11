@@ -1,0 +1,114 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="5.0" etag="3" version="22.1.0" type="device">
+  <diagram name="DFD_ToBe_Запись" id="dfd3">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Пациент (левый край) -->
+        <mxCell id="patient" value="Пациент" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="300" width="90" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Портал/МП -->
+        <mxCell id="portal" value="Портал / МП" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="295" width="110" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- API Gateway -->
+        <mxCell id="gateway" value="API Gateway&#xa;(mTLS / JWT)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="290" width="120" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Сервис записи -->
+        <mxCell id="booking" value="Сервис записи" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="295" width="110" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- БД -->
+        <mxCell id="db" value="PostgreSQL&#xa;(AES-256 + теги)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="280" width="140" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Kafka -->
+        <mxCell id="kafka" value="Kafka" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="450" width="110" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Уведомления -->
+        <mxCell id="notify" value="Уведомления&#xa;(врач/ресепшен)" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="440" width="140" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Поток 1: Пациент → Портал (TLS) -->
+        <mxCell id="flow1" value="TLS 1.3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#82b366;strokeWidth=2;fontColor=#008800;" edge="1" parent="1" source="patient" target="portal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Поток 2: Портал → Gateway (mTLS) -->
+        <mxCell id="flow2" value="mTLS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#82b366;strokeWidth=2;fontColor=#008800;" edge="1" parent="1" source="portal" target="gateway">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Поток 3: Gateway → Сервис записи (JWT+RBAC) -->
+        <mxCell id="flow3" value="JWT + RBAC" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#82b366;strokeWidth=2;fontColor=#008800;" edge="1" parent="1" source="gateway" target="booking">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Поток 4: Сервис записи → БД (шифрование) -->
+        <mxCell id="flow4" value="AES-256 шифрование" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#82b366;strokeWidth=2;fontColor=#008800;" edge="1" parent="1" source="booking" target="db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Поток 5: Сервис записи → Kafka (событие) -->
+        <mxCell id="flow5" value="событие записи" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#666666;strokeWidth=1.5;" edge="1" parent="1" source="booking" target="kafka">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="615" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Поток 6: Kafka → Уведомления -->
+        <mxCell id="flow6" value="уведомление" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=#666666;strokeWidth=1.5;" edge="1" parent="1" source="kafka" target="notify">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="475"/>
+              <mxPoint x="750" y="475"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Блок безопасности (справа внизу) -->
+        <mxCell id="security_box" value="Меры защиты" style="shape=swimlane;startSize=25;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="980" y="280" width="250" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sec1" value="✅ TLS 1.3 на всех каналах" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="990" y="315" width="230" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sec2" value="✅ mTLS для сервис-сервис" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="990" y="345" width="230" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sec3" value="✅ Шифрование в покое AES-256" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="990" y="375" width="230" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sec4" value="✅ RBAC + ABAC (через OPA)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="990" y="405" width="230" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sec5" value="✅ Аудит доступа (ELK)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="990" y="435" width="230" height="25" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sec6" value="✅ Тегирование данных" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="990" y="465" width="230" height="25" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
